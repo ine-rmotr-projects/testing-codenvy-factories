@@ -1,0 +1,110 @@
+{
+  "v": "4.0",
+  "name": "Testing factory",
+  "policies": {
+    "create": "perUser"
+  },
+  "workspace": {
+    "environments": {
+      "default": {
+        "machines": {
+          "dev-machine": {
+            "attributes": {
+              "memoryLimitBytes": "536870912"
+            },
+            "servers": {},
+            "agents": [
+              "org.eclipse.che.ls.python",
+              "org.eclipse.che.ssh",
+              "org.eclipse.che.ws-agent",
+              "org.eclipse.che.terminal",
+              "org.eclipse.che.exec"
+            ]
+          }
+        },
+        "recipe": {
+          "location": "eclipse/ubuntu_python:latest",
+          "type": "dockerimage"
+        }
+      }
+    },
+    "defaultEnv": "default",
+    "projects": [
+      {
+        "links": [],
+        "name": "http-practice",
+        "attributes": {
+          "commands": [
+            "{\"commandLine\":\"echo \\\"hello from command 2\\\"\", \"name\":\"testingCommand\", \"attributes\":{\"previewUrl\":\"\", \"goal\":\"Build\"}, \"type\":\"custom\"}"
+          ]
+        },
+        "type": "blank",
+        "source": {
+          "location": "https://github.com/rmotr-group-projects/http-practice.git",
+          "type": "git",
+          "parameters": {}
+        },
+        "path": "/http-practice",
+        "description": "",
+        "problems": [],
+        "mixins": []
+      }
+    ],
+    "name": "http-practice",
+    "commands": [
+      {
+        "commandLine": "cd ${current.project.path} && python main.py",
+        "name": "run",
+        "attributes": {
+          "goal": "Run",
+          "previewUrl": ""
+        },
+        "type": "custom"
+      },
+      {
+        "commandLine": "wget https://gist.githubusercontent.com/martinzugnoni/c4f52bd1a1b8ec0fa760a53117a0e87e/raw/7f7fb44f426dd6e5b1929be5bec07109b8dc168f/codenvy-initial-setup.sh",
+        "name": "getting the script",
+        "attributes": {
+          "previewUrl": ""
+        },
+        "type": "custom"
+      },
+      {
+        "commandLine": "chmod u+x codenvy-initial-setup.sh",
+        "name": "give it permissions",
+        "attributes": {
+          "previewUrl": ""
+        },
+        "type": "custom"
+      },
+      {
+        "commandLine": "./codenvy-initial-setup.sh",
+        "name": "run script",
+        "attributes": {
+          "previewUrl": ""
+        },
+        "type": "custom"
+      }
+    ],
+    "links": []
+  },
+  "id": "factoryvjbioqlgybrwwe1v",
+  "ide": {
+    "onProjectsLoaded": {
+      "actions": [
+        {
+          "properties": {
+            "name": "getting the script"
+          },
+          "id": "runCommand"
+        }
+      ]
+    }
+  },
+  "creator": {
+    "name": "mzugnoni",
+    "email": "martin@rmotr.com",
+    "created": 1529529080290,
+    "userId": "useras3u9fda58plejy0"
+  }
+}
